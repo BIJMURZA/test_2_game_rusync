@@ -102,25 +102,33 @@ const App = () => {
                           style={[styles.buttomTab, activeMarketplaceTab === 'whenIbuy?' && styles.activeTab]}
                           onPress={() => setActiveMarketplaceTab('whenIbuy?')}
                           >
-                          <Text style={styles.textTitle}>Где купить?  </Text>
+                          <Text style={styles.textTitle}> Где купить?  </Text>
                           </TouchableOpacity>
+                          <Text style={styles.textTitle}> / </Text>
                           <TouchableOpacity
                           style={[styles.buttomTab, activeMarketplaceTab === 'whenIplay?' && styles.activeTab]}
                           onPress={() => setActiveMarketplaceTab('whenIplay?')}
                           >
                               <Text style={styles.textTitle}> Где сыграть? </Text>
                           </TouchableOpacity>
+                          <Text style={styles.textTitle}> / </Text>
+                          <TouchableOpacity
+                              style={[styles.buttomTab, activeMarketplaceTab === 'whenIfiendTeam?' && styles.activeTab]}
+                              onPress={() => setActiveMarketplaceTab('whenIfiendTeam?')}
+                          >
+                              <Text style={styles.textTitle}> Где тиммейты? </Text>
+                          </TouchableOpacity>
                       </View>
                       {activeMarketplaceTab === 'whenIplay?' && (
                           <View>
                               <View style={styles.marketplaceContainer}>
-                                  <Image source={require('./assets/image/geforce_now.png')} style={styles.imageMartkerplace}/>
+                                  <Image source={require('./assets/image/geforce_now.png')} style={styles.imageGaming}/>
                                   <TouchableOpacity style={styles.playButton} onPress={hadPress}>
                                       <Text style={styles.playButtonText}>Играть</Text>
                                   </TouchableOpacity>
                               </View>
                               <View style={styles.marketplaceContainer}>
-                                  <Image source={require('./assets/image/vk_play.png')} style={styles.imageMartkerplace}/>
+                                  <Image source={require('./assets/image/vk_play.png')} style={styles.imageGaming}/>
                                   <TouchableOpacity style={styles.playButton}>
                                       <Text style={styles.playButtonText}>Играть</Text>
                                   </TouchableOpacity>
@@ -131,6 +139,40 @@ const App = () => {
                                       <Text style={styles.playButtonText}>Играть</Text>
                                   </TouchableOpacity>
                               </View>
+                          </View>
+                      )}
+                      {activeMarketplaceTab === 'whenIbuy?' && (
+                          <View>
+                              <View style={styles.marketplaceContainer}>
+                                  <Image source={require('./assets/image/gabestore.png')} style={styles.imageMarketplace}/>
+                                  <TouchableOpacity style={styles.playButton} onPress={hadPress}>
+                                      <Text style={styles.playButtonText}>Купить</Text>
+                                  </TouchableOpacity>
+                              </View>
+                              <View style={styles.marketplaceContainer}>
+                                  <Image source={require('./assets/image/game_mag.png')} style={styles.imageMarketplace}/>
+                                  <TouchableOpacity style={styles.playButton} onPress={hadPress}>
+                                      <Text style={styles.playButtonText}>Купить</Text>
+                                  </TouchableOpacity>
+                              </View>
+                              <View style={styles.marketplaceContainer}>
+                                  <Image source={require('./assets/image/gamerz.png')} style={styles.imageMarketplace}/>
+                                  <TouchableOpacity style={styles.playButton} onPress={hadPress}>
+                                      <Text style={styles.playButtonText}>Купить</Text>
+                                  </TouchableOpacity>
+                              </View>
+                              <View style={styles.marketplaceContainer}>
+                                  <Image source={require('./assets/image/steam.jpg')} style={styles.imageMarketplace}/>
+                                  <TouchableOpacity style={styles.playButton} onPress={hadPress}>
+                                      <Text style={styles.playButtonText}>Купить</Text>
+                                  </TouchableOpacity>
+                              </View>
+                          </View>
+                      )}
+                      {activeMarketplaceTab === 'whenIfiendTeam?' && (
+                          <View>
+                              <Text style={styles.textBombisti}>БОМБИСТЫ</Text>
+                              <Image source={require('./assets/image/bombisti.png')} style={styles.imageBombisti}></Image>
                           </View>
                       )}
                   </View>
@@ -214,7 +256,14 @@ const styles = StyleSheet.create( {
         textAlign: 'center',
         marginTop: 0,
     },
-    imageMartkerplace: {
+    imageGaming: {
+        height: 30,
+        width: 95,
+        resizeMode: 'contain',
+        marginTop: 5,
+        marginBottom: 5,
+    },
+    imageMarketplace: {
         height: 30,
         width: 95,
         resizeMode: 'contain',
@@ -226,8 +275,8 @@ const styles = StyleSheet.create( {
         borderBottomWidth: 1,
         borderColor: '#c0c0c0',
         alignItems: 'center',
-        marginTop: 5,
-        marginBottom: 5,
+        marginTop: 7,
+        marginBottom: 7,
     },
     playButton: {
         backgroundColor: 'red',
@@ -251,7 +300,21 @@ const styles = StyleSheet.create( {
     marketplaceHeader: {
         flexDirection: 'row',
         alignSelf: 'center',
-    }
+    },
+    imageBombisti: {
+        alignItems: 'center',
+        height: 250,
+        width: 350,
+        resizeMode: 'contain',
+        marginTop: 5,
+        marginBottom: 5,
+    },
+    textBombisti: {
+        marginTop: 5,
+        fontSize: 18,
+        textAlign: 'center',
+        color:'black',
+    },
 });
 
 export default App;
