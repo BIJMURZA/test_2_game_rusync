@@ -1,10 +1,16 @@
 import React, {useState} from 'react';
-import { SafeAreaView, StyleSheet, ScrollView, Text, StatusBar, View, Image, TouchableOpacity } from "react-native";
+import { SafeAreaView, StyleSheet, ScrollView, Text, StatusBar, View, Image, TouchableOpacity, Linking } from "react-native";
 
 
 const App = () => {
     const [activeTab, setActiveTab] = useState('description');
     const [requirementsTab, setRequirementsTab] = useState('minimum');
+    const [activeMarketplaceTab, setActiveMarketplaceTab] = useState('whenIplay')
+
+    const hadPress = () => {
+        const url = 'https://play.geforcenow.com/games?game-id=4ac47546-4023-4ae7-98d1-60c98c9db752';
+        Linking.openURL(url)
+    }
     return (
       <>
         <StatusBar barStyle="default" />
@@ -90,25 +96,42 @@ const App = () => {
                       )}
                   </View>
                   <View style={styles.marketplacesContainer}>
-                      <Text style={styles.textTitle}>Где сыграть?</Text>
-                      <View style={styles.marketplaceContainer}>
-                          <Image source={require('./assets/image/geforce_now.png')} style={styles.imageMartkerplace}/>
-                          <TouchableOpacity style={styles.playButton}>
-                              <Text style={styles.playButtonText}>Играть</Text>
+                      <View style={styles.marketplaceHeader}>
+                          <TouchableOpacity
+                          style={[styles.buttomTab, activeMarketplaceTab === 'whenIbuy?' && styles.activeTab]}
+                          onPress={() => setActiveMarketplaceTab('whenIbuy?')}
+                          >
+                          <Text style={styles.textTitle}>Где купить?  </Text>
+                          </TouchableOpacity>
+                          <TouchableOpacity
+                          style={[styles.buttomTab, activeMarketplaceTab === 'whenIplay?' && styles.activeTab]}
+                          onPress={() => setActiveMarketplaceTab('whenIplay?')}
+                          >
+                              <Text style={styles.textTitle}> Где сыграть? </Text>
                           </TouchableOpacity>
                       </View>
-                      <View style={styles.marketplaceContainer}>
-                          <Image source={require('./assets/image/vk_play.png')} style={styles.imageMartkerplace}/>
-                          <TouchableOpacity style={styles.playButton}>
-                              <Text style={styles.playButtonText}>Играть</Text>
-                          </TouchableOpacity>
-                      </View>
-                      <View style={styles.marketplaceContainer}>
-                          <Text>RUSYNC            </Text>
-                          <TouchableOpacity style={styles.playButton}>
-                              <Text style={styles.playButtonText}>Играть</Text>
-                          </TouchableOpacity>
-                      </View>
+                      {activeMarketplaceTab === 'whenIplay?' && (
+                          <View>
+                              <View style={styles.marketplaceContainer}>
+                                  <Image source={require('./assets/image/geforce_now.png')} style={styles.imageMartkerplace}/>
+                                  <TouchableOpacity style={styles.playButton} onPress={hadPress}>
+                                      <Text style={styles.playButtonText}>Играть</Text>
+                                  </TouchableOpacity>
+                              </View>
+                              <View style={styles.marketplaceContainer}>
+                                  <Image source={require('./assets/image/vk_play.png')} style={styles.imageMartkerplace}/>
+                                  <TouchableOpacity style={styles.playButton}>
+                                      <Text style={styles.playButtonText}>Играть</Text>
+                                  </TouchableOpacity>
+                              </View>
+                              <View style={styles.marketplaceContainer}>
+                                  <Text>RUSYNC            </Text>
+                                  <TouchableOpacity style={styles.playButton}>
+                                      <Text style={styles.playButtonText}>Играть</Text>
+                                  </TouchableOpacity>
+                              </View>
+                          </View>
+                      )}
                   </View>
               </ScrollView>
           </SafeAreaView>
@@ -120,12 +143,12 @@ const styles = StyleSheet.create( {
     mainContainer: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: '#121a24',
+        backgroundColor: '#c0c0c0',
     },
     marketplacesContainer: {
         flexDirection: 'column',
         position: 'relative',
-        backgroundColor: '#ffffff',
+        backgroundColor: '#ebebeb',
         borderRadius: 35,
         minHeight: 150,
         marginTop: 25,
@@ -135,7 +158,7 @@ const styles = StyleSheet.create( {
         flexDirection: 'column',
         justifyContent: 'space-between',
         position: "relative",
-        backgroundColor: '#ffffff',
+        backgroundColor: '#ebebeb',
         borderRadius: 35,
         minHeight: 150,
         marginTop: -30,
@@ -200,7 +223,7 @@ const styles = StyleSheet.create( {
     marketplaceContainer: {
         flexDirection: 'row',
         borderBottomWidth: 1,
-        borderColor: '#f0f0f0',
+        borderColor: '#c0c0c0',
         alignItems: 'center',
         marginTop: 5,
         marginBottom: 5,
@@ -224,6 +247,10 @@ const styles = StyleSheet.create( {
         fontWeight: 'bold',
         textAlign: 'center',
     },
+    marketplaceHeader: {
+        flexDirection: 'row',
+        alignSelf: 'center',
+    }
 });
 
 export default App;
