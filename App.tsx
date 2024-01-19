@@ -11,6 +11,7 @@ const App = () => {
         const url = 'https://play.geforcenow.com/games?game-id=4ac47546-4023-4ae7-98d1-60c98c9db752';
         Linking.openURL(url)
     }
+
     return (
       <>
         <StatusBar barStyle="default" />
@@ -150,7 +151,7 @@ const styles = StyleSheet.create( {
         position: 'relative',
         backgroundColor: '#ebebeb',
         borderRadius: 35,
-        minHeight: 150,
+        minHeight: 250,
         marginTop: 25,
         padding: 30,
     },
