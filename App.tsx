@@ -90,7 +90,25 @@ const App = () => {
                       )}
                   </View>
                   <View style={styles.marketplacesContainer}>
-                      <Text style={styles.textTitle}>Торговые площадки</Text>
+                      <Text style={styles.textTitle}>Где сыграть?</Text>
+                      <View style={styles.marketplaceContainer}>
+                          <Image source={require('./assets/image/geforce_now.png')} style={styles.imageMartkerplace}/>
+                          <TouchableOpacity style={styles.playButton}>
+                              <Text style={styles.playButtonText}>Играть</Text>
+                          </TouchableOpacity>
+                      </View>
+                      <View style={styles.marketplaceContainer}>
+                          <Image source={require('./assets/image/vk_play.png')} style={styles.imageMartkerplace}/>
+                          <TouchableOpacity style={styles.playButton}>
+                              <Text style={styles.playButtonText}>Играть</Text>
+                          </TouchableOpacity>
+                      </View>
+                      <View style={styles.marketplaceContainer}>
+                          <Text>RUSYNC            </Text>
+                          <TouchableOpacity style={styles.playButton}>
+                              <Text style={styles.playButtonText}>Играть</Text>
+                          </TouchableOpacity>
+                      </View>
                   </View>
               </ScrollView>
           </SafeAreaView>
@@ -106,12 +124,12 @@ const styles = StyleSheet.create( {
     },
     marketplacesContainer: {
         flexDirection: 'column',
-        justifyContent: 'space-between',
         position: 'relative',
         backgroundColor: '#ffffff',
         borderRadius: 35,
         minHeight: 150,
         marginTop: 25,
+        padding: 30,
     },
     informationContainer: {
         flexDirection: 'column',
@@ -170,7 +188,41 @@ const styles = StyleSheet.create( {
         fontSize: 16,
         color: '#000000',
         textAlign: 'center',
-        marginTop: 10,
+        marginTop: 0,
+    },
+    imageMartkerplace: {
+        height: 30,
+        width: 95,
+        resizeMode: 'contain',
+        marginTop: 5,
+        marginBottom: 5,
+    },
+    marketplaceContainer: {
+        flexDirection: 'row',
+        borderBottomWidth: 1,
+        borderColor: '#f0f0f0',
+        alignItems: 'center',
+        marginTop: 5,
+        marginBottom: 5,
+    },
+    playButton: {
+        backgroundColor: 'red',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingVertical: 8,
+        paddingHorizontal: 16,
+        borderRadius: 2,
+        elevation: 2,
+        marginLeft: 160,
+        width: 90,
+        height: 35,
+        marginBottom: 5,
+    },
+    playButtonText: {
+        color: 'white',
+        fontSize: 14,
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
 });
 
