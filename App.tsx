@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -11,30 +11,31 @@ import {
   Linking,
 } from 'react-native';
 
+type market = {
+  market: string;
+  price: string[];
+};
+
 const App = () => {
   const [activeTab, setActiveTab] = useState('description');
   const [requirementsTab, setRequirementsTab] = useState('minimum');
   const [activeMarketplaceTab, setActiveMarketplaceTab] = useState('whenIplay');
+  const aid = '2050650';
+  const [markets, setMarkets] = useState<market[]>([]);
+
+  useEffect(() => {
+    fetch(`http://192.168.0.117:3000/${aid}`)
+      .then(response => response.json())
+      .then(data => {
+        setMarkets(data);
+      })
+      .catch(error => console.error(error));
+  }, []);
 
   const hadPress = () => {
     const url =
       'https://play.geforcenow.com/games?game-id=4ac47546-4023-4ae7-98d1-60c98c9db752';
-    Linking.openURL(url);
-  };
-
-  const [data, setData] = useState([]);
-  const [table, setTable] = useState('');
-
-  const fetchDB = async () => {
-    if (table) {
-      try {
-        const response = await fetch(`http://192.168.0.117:3000/data/${table}`);
-        const jsonData = await response.json();
-        setData(jsonData);
-      } catch (error) {
-        console.error('Ошибка при получение данных: ', error);
-      }
-    }
+    Linking.openURL(url).catch(error => console.error(error));
   };
 
   return (
@@ -217,7 +218,16 @@ const App = () => {
                     source={require('./assets/image/gabestore.png')}
                     style={styles.imageMarketplace}
                   />
-                  <Text style={styles.textPrice}>2000 ₽</Text>
+                  <View style={styles.textPriceContainer}>
+                    {markets.map((item, index) => (
+                      <View key={index}>
+                        {item.market === 'gabestore' &&
+                          !item.price.includes('Нет в наличии') && (
+                            <Text style={styles.textPrice}>{item.price} ₽</Text>
+                          )}
+                      </View>
+                    ))}
+                  </View>
                   <TouchableOpacity
                     style={styles.playButton}
                     onPress={hadPress}>
@@ -229,7 +239,15 @@ const App = () => {
                     source={require('./assets/image/game_mag.png')}
                     style={styles.imageMarketplace}
                   />
-                  <Text style={styles.textPrice}>2000 ₽</Text>
+                  <View style={styles.textPriceContainer}>
+                    {markets.map((item, index) => (
+                      <View key={index}>
+                        {item.market === 'game_mag' && (
+                          <Text style={styles.textPrice}>{item.price} ₽</Text>
+                        )}
+                      </View>
+                    ))}
+                  </View>
                   <TouchableOpacity
                     style={styles.playButton}
                     onPress={hadPress}>
@@ -241,7 +259,15 @@ const App = () => {
                     source={require('./assets/image/gamerz.png')}
                     style={styles.imageMarketplace}
                   />
-                  <Text style={styles.textPrice}>2000 ₽</Text>
+                  <View style={styles.textPriceContainer}>
+                    {markets.map((item, index) => (
+                      <View key={index}>
+                        {item.market === 'gamerz' && (
+                          <Text style={styles.textPrice}>{item.price} ₽</Text>
+                        )}
+                      </View>
+                    ))}
+                  </View>
                   <TouchableOpacity
                     style={styles.playButton}
                     onPress={hadPress}>
@@ -253,8 +279,16 @@ const App = () => {
                     source={require('./assets/image/steam.png')}
                     style={styles.imageMarketplace}
                   />
-                  <Text style={styles.textPrice}>2000 ₽</Text>
-
+                  <View style={styles.textPriceContainer}>
+                    {markets.map((item, index) => (
+                      <View key={index}>
+                        {item.market === 'steam' &&
+                          !item.price.includes('Нет в наличии') && (
+                            <Text style={styles.textPrice}>{item.price} ₽</Text>
+                          )}
+                      </View>
+                    ))}
+                  </View>
                   <TouchableOpacity
                     style={styles.playButton}
                     onPress={hadPress}>
@@ -266,7 +300,15 @@ const App = () => {
                     source={require('./assets/image/steampay.png')}
                     style={styles.imageMarketplace}
                   />
-                  <Text style={styles.textPrice}>2000 ₽</Text>
+                  <View style={styles.textPriceContainer}>
+                    {markets.map((item, index) => (
+                      <View key={index}>
+                        {item.market === 'steampay' && (
+                          <Text style={styles.textPrice}>{item.price} ₽</Text>
+                        )}
+                      </View>
+                    ))}
+                  </View>
                   <TouchableOpacity
                     style={styles.playButton}
                     onPress={hadPress}>
@@ -278,7 +320,15 @@ const App = () => {
                     source={require('./assets/image/steambuy.png')}
                     style={styles.imageMarketplace}
                   />
-                  <Text style={styles.textPrice}>2000 ₽</Text>
+                  <View style={styles.textPriceContainer}>
+                    {markets.map((item, index) => (
+                      <View key={index}>
+                        {item.market === 'steambuy' && (
+                          <Text style={styles.textPrice}>{item.price} ₽</Text>
+                        )}
+                      </View>
+                    ))}
+                  </View>
                   <TouchableOpacity
                     style={styles.playButton}
                     onPress={hadPress}>
@@ -290,7 +340,15 @@ const App = () => {
                     source={require('./assets/image/zakazaka.png')}
                     style={styles.imageMarketplace}
                   />
-                  <Text style={styles.textPrice}>2000 ₽</Text>
+                  <View style={styles.textPriceContainer}>
+                    {markets.map((item, index) => (
+                      <View key={index}>
+                        {item.market === 'zaka_zaka' && (
+                          <Text style={styles.textPrice}>{item.price} ₽</Text>
+                        )}
+                      </View>
+                    ))}
+                  </View>
                   <TouchableOpacity
                     style={styles.playButton}
                     onPress={hadPress}>
@@ -395,7 +453,9 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   marketplaceContainer: {
+    flex: 1,
     flexDirection: 'row',
+    justifyContent: 'space-between',
     borderBottomWidth: 1,
     borderColor: '#c0c0c0',
     alignItems: 'center',
@@ -409,8 +469,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 16,
     borderRadius: 2,
-    elevation: 2,
-    marginLeft: 20,
+    elevation: 7,
     width: 90,
     height: 35,
     marginBottom: 5,
@@ -440,13 +499,15 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   textPrice: {
-    color: 'black',
     fontSize: 18,
+    color: 'black',
     fontWeight: 'bold',
-    justifyContent: 'flex-end',
-    marginLeft: 55,
-    textAlign: 'center',
-    marginBottom: 5,
+  },
+  textPriceContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+    padding: 10,
   },
 });
 
