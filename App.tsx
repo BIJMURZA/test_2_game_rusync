@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 
 type market = {
+  game: string;
   market: string;
   price: string[];
 };
@@ -262,7 +263,11 @@ const App = () => {
                                 </Text>
                                 <TouchableOpacity
                                   style={styles.buttonBuy}
-                                  onPress={hadPress}>
+                                  onPress={() =>
+                                    Linking.openURL(
+                                      `https://game-mag.ru/shop/${item.game}`,
+                                    )
+                                  }>
                                   <Text style={styles.textButtonBuy}>
                                     Купить
                                   </Text>
@@ -287,7 +292,11 @@ const App = () => {
                                 </Text>
                                 <TouchableOpacity
                                   style={styles.buttonBuy}
-                                  onPress={hadPress}>
+                                  onPress={() =>
+                                    Linking.openURL(
+                                      `https://gamerz.online/product/${item.game}`,
+                                    )
+                                  }>
                                   <Text style={styles.textButtonBuy}>
                                     Купить
                                   </Text>
@@ -312,7 +321,11 @@ const App = () => {
                                 </Text>
                                 <TouchableOpacity
                                   style={styles.buttonBuy}
-                                  onPress={hadPress}>
+                                  onPress={() =>
+                                    Linking.openURL(
+                                      `https://store.steampowered.com/app/${aid}`,
+                                    )
+                                  }>
                                   <Text style={styles.textButtonBuy}>
                                     Купить
                                   </Text>
@@ -337,7 +350,11 @@ const App = () => {
                                 </Text>
                                 <TouchableOpacity
                                   style={styles.buttonBuy}
-                                  onPress={hadPress}>
+                                  onPress={() =>
+                                    Linking.openURL(
+                                      `https://steampay.com/game/${item.game}`,
+                                    )
+                                  }>
                                   <Text style={styles.textButtonBuy}>
                                     Купить
                                   </Text>
@@ -362,7 +379,11 @@ const App = () => {
                                 </Text>
                                 <TouchableOpacity
                                   style={styles.buttonBuy}
-                                  onPress={hadPress}>
+                                  onPress={() =>
+                                    Linking.openURL(
+                                      `https://steambuy.com/${item.game}`,
+                                    )
+                                  }>
                                   <Text style={styles.textButtonBuy}>
                                     Купить
                                   </Text>
@@ -387,7 +408,11 @@ const App = () => {
                                 </Text>
                                 <TouchableOpacity
                                   style={styles.buttonBuy}
-                                  onPress={hadPress}>
+                                  onPress={() =>
+                                    Linking.openURL(
+                                      `https://zaka-zaka.com/game/${item.game}`,
+                                    )
+                                  }>
                                   <Text style={styles.textButtonBuy}>
                                     Купить
                                   </Text>
