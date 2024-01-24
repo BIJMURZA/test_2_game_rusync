@@ -27,7 +27,14 @@ const App = () => {
     fetch(`http://192.168.0.117:3000/${aid}`)
       .then(response => response.json())
       .then(data => {
-        setMarkets(data);
+        const sortData = [...data]
+          .filter(
+            item =>
+              !item.price.includes('Нет в наличии') &&
+              !item.price.includes('-'),
+          )
+          .sort((a, b) => parseInt(a.price, 10) - parseInt(b.price, 10));
+        setMarkets(sortData);
       })
       .catch(error => console.error(error));
   }, []);
@@ -237,12 +244,6 @@ const App = () => {
                                 </TouchableOpacity>
                               </View>
                             )}
-                          {(item.price.includes('Нет в наличии') ||
-                            item.price.includes('-')) && (
-                            <View style={styles.rows}>
-                              <Text style={styles.textPrice}>{item.price}</Text>
-                            </View>
-                          )}
                         </View>
                       </View>
                     )}
@@ -268,12 +269,6 @@ const App = () => {
                                 </TouchableOpacity>
                               </View>
                             )}
-                          {(item.price.includes('Нет в наличии') ||
-                            item.price.includes('-')) && (
-                            <View style={styles.rows}>
-                              <Text style={styles.textPrice}>{item.price}</Text>
-                            </View>
-                          )}
                         </View>
                       </View>
                     )}
@@ -299,12 +294,6 @@ const App = () => {
                                 </TouchableOpacity>
                               </View>
                             )}
-                          {(item.price.includes('Нет в наличии') ||
-                            item.price.includes('-')) && (
-                            <View style={styles.rows}>
-                              <Text style={styles.textPrice}>{item.price}</Text>
-                            </View>
-                          )}
                         </View>
                       </View>
                     )}
@@ -330,12 +319,6 @@ const App = () => {
                                 </TouchableOpacity>
                               </View>
                             )}
-                          {(item.price.includes('Нет в наличии') ||
-                            item.price.includes('-')) && (
-                            <View style={styles.rows}>
-                              <Text style={styles.textPrice}>{item.price}</Text>
-                            </View>
-                          )}
                         </View>
                       </View>
                     )}
@@ -361,12 +344,6 @@ const App = () => {
                                 </TouchableOpacity>
                               </View>
                             )}
-                          {(item.price.includes('Нет в наличии') ||
-                            item.price.includes('-')) && (
-                            <View style={styles.rows}>
-                              <Text style={styles.textPrice}>{item.price}</Text>
-                            </View>
-                          )}
                         </View>
                       </View>
                     )}
@@ -392,12 +369,6 @@ const App = () => {
                                 </TouchableOpacity>
                               </View>
                             )}
-                          {(item.price.includes('Нет в наличии') ||
-                            item.price.includes('-')) && (
-                            <View style={styles.rows}>
-                              <Text style={styles.textPrice}>{item.price}</Text>
-                            </View>
-                          )}
                         </View>
                       </View>
                     )}
@@ -423,12 +394,6 @@ const App = () => {
                                 </TouchableOpacity>
                               </View>
                             )}
-                          {(item.price.includes('Нет в наличии') ||
-                            item.price.includes('-')) && (
-                            <View style={styles.rows}>
-                              <Text style={styles.textPrice}>{item.price}</Text>
-                            </View>
-                          )}
                         </View>
                       </View>
                     )}
