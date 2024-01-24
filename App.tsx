@@ -213,148 +213,227 @@ const App = () => {
             )}
             {activeMarketplaceTab === 'whenIbuy?' && (
               <View>
-                <View style={styles.marketplaceContainer}>
-                  <Image
-                    source={require('./assets/image/gabestore.png')}
-                    style={styles.imageMarketplace}
-                  />
-                  <View style={styles.textPriceContainer}>
-                    {markets.map((item, index) => (
-                      <View key={index}>
-                        {item.market === 'gabestore' &&
-                          !item.price.includes('Нет в наличии') && (
-                            <Text style={styles.textPrice}>{item.price} ₽</Text>
+                {markets.map((item, index) => (
+                  <View key={index} style={styles.marketplaceContainer}>
+                    {item.market === 'gabestore' && (
+                      <View style={styles.marketContainer}>
+                        <Image
+                          source={require('./assets/image/gabestore.png')}
+                          style={styles.imageMarketplace}
+                        />
+                        <View>
+                          {!item.price.includes('Нет в наличии') &&
+                            !item.price.includes('-') && (
+                              <View style={styles.rows}>
+                                <Text style={styles.textPrice}>
+                                  {item.price} ₽
+                                </Text>
+                                <TouchableOpacity
+                                  style={styles.buttonBuy}
+                                  onPress={hadPress}>
+                                  <Text style={styles.textButtonBuy}>
+                                    Купить
+                                  </Text>
+                                </TouchableOpacity>
+                              </View>
+                            )}
+                          {(item.price.includes('Нет в наличии') ||
+                            item.price.includes('-')) && (
+                            <View style={styles.rows}>
+                              <Text style={styles.textPrice}>{item.price}</Text>
+                            </View>
                           )}
+                        </View>
                       </View>
-                    ))}
-                  </View>
-                  <TouchableOpacity
-                    style={styles.playButton}
-                    onPress={hadPress}>
-                    <Text style={styles.playButtonText}>Купить</Text>
-                  </TouchableOpacity>
-                </View>
-                <View style={styles.marketplaceContainer}>
-                  <Image
-                    source={require('./assets/image/game_mag.png')}
-                    style={styles.imageMarketplace}
-                  />
-                  <View style={styles.textPriceContainer}>
-                    {markets.map((item, index) => (
-                      <View key={index}>
-                        {item.market === 'game_mag' && (
-                          <Text style={styles.textPrice}>{item.price} ₽</Text>
-                        )}
-                      </View>
-                    ))}
-                  </View>
-                  <TouchableOpacity
-                    style={styles.playButton}
-                    onPress={hadPress}>
-                    <Text style={styles.playButtonText}>Купить</Text>
-                  </TouchableOpacity>
-                </View>
-                <View style={styles.marketplaceContainer}>
-                  <Image
-                    source={require('./assets/image/gamerz.png')}
-                    style={styles.imageMarketplace}
-                  />
-                  <View style={styles.textPriceContainer}>
-                    {markets.map((item, index) => (
-                      <View key={index}>
-                        {item.market === 'gamerz' && (
-                          <Text style={styles.textPrice}>{item.price} ₽</Text>
-                        )}
-                      </View>
-                    ))}
-                  </View>
-                  <TouchableOpacity
-                    style={styles.playButton}
-                    onPress={hadPress}>
-                    <Text style={styles.playButtonText}>Купить</Text>
-                  </TouchableOpacity>
-                </View>
-                <View style={styles.marketplaceContainer}>
-                  <Image
-                    source={require('./assets/image/steam.png')}
-                    style={styles.imageMarketplace}
-                  />
-                  <View style={styles.textPriceContainer}>
-                    {markets.map((item, index) => (
-                      <View key={index}>
-                        {item.market === 'steam' &&
-                          !item.price.includes('Нет в наличии') && (
-                            <Text style={styles.textPrice}>{item.price} ₽</Text>
+                    )}
+                    {item.market === 'game_mag' && (
+                      <View style={styles.marketContainer}>
+                        <Image
+                          source={require('./assets/image/game_mag.png')}
+                          style={styles.imageMarketplace}
+                        />
+                        <View>
+                          {!item.price.includes('Нет в наличии') &&
+                            !item.price.includes('-') && (
+                              <View style={styles.rows}>
+                                <Text style={styles.textPrice}>
+                                  {item.price} ₽
+                                </Text>
+                                <TouchableOpacity
+                                  style={styles.buttonBuy}
+                                  onPress={hadPress}>
+                                  <Text style={styles.textButtonBuy}>
+                                    Купить
+                                  </Text>
+                                </TouchableOpacity>
+                              </View>
+                            )}
+                          {(item.price.includes('Нет в наличии') ||
+                            item.price.includes('-')) && (
+                            <View style={styles.rows}>
+                              <Text style={styles.textPrice}>{item.price}</Text>
+                            </View>
                           )}
+                        </View>
                       </View>
-                    ))}
-                  </View>
-                  <TouchableOpacity
-                    style={styles.playButton}
-                    onPress={hadPress}>
-                    <Text style={styles.playButtonText}>Купить</Text>
-                  </TouchableOpacity>
-                </View>
-                <View style={styles.marketplaceContainer}>
-                  <Image
-                    source={require('./assets/image/steampay.png')}
-                    style={styles.imageMarketplace}
-                  />
-                  <View style={styles.textPriceContainer}>
-                    {markets.map((item, index) => (
-                      <View key={index}>
-                        {item.market === 'steampay' && (
-                          <Text style={styles.textPrice}>{item.price} ₽</Text>
-                        )}
+                    )}
+                    {item.market === 'gamerz' && (
+                      <View style={styles.marketContainer}>
+                        <Image
+                          source={require('./assets/image/gamerz.png')}
+                          style={styles.imageMarketplace}
+                        />
+                        <View>
+                          {!item.price.includes('Нет в наличии') &&
+                            !item.price.includes('-') && (
+                              <View style={styles.rows}>
+                                <Text style={styles.textPrice}>
+                                  {item.price} ₽
+                                </Text>
+                                <TouchableOpacity
+                                  style={styles.buttonBuy}
+                                  onPress={hadPress}>
+                                  <Text style={styles.textButtonBuy}>
+                                    Купить
+                                  </Text>
+                                </TouchableOpacity>
+                              </View>
+                            )}
+                          {(item.price.includes('Нет в наличии') ||
+                            item.price.includes('-')) && (
+                            <View style={styles.rows}>
+                              <Text style={styles.textPrice}>{item.price}</Text>
+                            </View>
+                          )}
+                        </View>
                       </View>
-                    ))}
-                  </View>
-                  <TouchableOpacity
-                    style={styles.playButton}
-                    onPress={hadPress}>
-                    <Text style={styles.playButtonText}>Купить</Text>
-                  </TouchableOpacity>
-                </View>
-                <View style={styles.marketplaceContainer}>
-                  <Image
-                    source={require('./assets/image/steambuy.png')}
-                    style={styles.imageMarketplace}
-                  />
-                  <View style={styles.textPriceContainer}>
-                    {markets.map((item, index) => (
-                      <View key={index}>
-                        {item.market === 'steambuy' && (
-                          <Text style={styles.textPrice}>{item.price} ₽</Text>
-                        )}
+                    )}
+                    {item.market === 'steam' && (
+                      <View style={styles.marketContainer}>
+                        <Image
+                          source={require('./assets/image/steam.png')}
+                          style={styles.imageMarketplace}
+                        />
+                        <View>
+                          {!item.price.includes('Нет в наличии') &&
+                            !item.price.includes('-') && (
+                              <View style={styles.rows}>
+                                <Text style={styles.textPrice}>
+                                  {item.price} ₽
+                                </Text>
+                                <TouchableOpacity
+                                  style={styles.buttonBuy}
+                                  onPress={hadPress}>
+                                  <Text style={styles.textButtonBuy}>
+                                    Купить
+                                  </Text>
+                                </TouchableOpacity>
+                              </View>
+                            )}
+                          {(item.price.includes('Нет в наличии') ||
+                            item.price.includes('-')) && (
+                            <View style={styles.rows}>
+                              <Text style={styles.textPrice}>{item.price}</Text>
+                            </View>
+                          )}
+                        </View>
                       </View>
-                    ))}
-                  </View>
-                  <TouchableOpacity
-                    style={styles.playButton}
-                    onPress={hadPress}>
-                    <Text style={styles.playButtonText}>Купить</Text>
-                  </TouchableOpacity>
-                </View>
-                <View style={styles.marketplaceContainer}>
-                  <Image
-                    source={require('./assets/image/zakazaka.png')}
-                    style={styles.imageMarketplace}
-                  />
-                  <View style={styles.textPriceContainer}>
-                    {markets.map((item, index) => (
-                      <View key={index}>
-                        {item.market === 'zaka_zaka' && (
-                          <Text style={styles.textPrice}>{item.price} ₽</Text>
-                        )}
+                    )}
+                    {item.market === 'steampay' && (
+                      <View style={styles.marketContainer}>
+                        <Image
+                          source={require('./assets/image/steampay.png')}
+                          style={styles.imageMarketplace}
+                        />
+                        <View>
+                          {!item.price.includes('Нет в наличии') &&
+                            !item.price.includes('-') && (
+                              <View style={styles.rows}>
+                                <Text style={styles.textPrice}>
+                                  {item.price} ₽
+                                </Text>
+                                <TouchableOpacity
+                                  style={styles.buttonBuy}
+                                  onPress={hadPress}>
+                                  <Text style={styles.textButtonBuy}>
+                                    Купить
+                                  </Text>
+                                </TouchableOpacity>
+                              </View>
+                            )}
+                          {(item.price.includes('Нет в наличии') ||
+                            item.price.includes('-')) && (
+                            <View style={styles.rows}>
+                              <Text style={styles.textPrice}>{item.price}</Text>
+                            </View>
+                          )}
+                        </View>
                       </View>
-                    ))}
+                    )}
+                    {item.market === 'steambuy' && (
+                      <View style={styles.marketContainer}>
+                        <Image
+                          source={require('./assets/image/steambuy.png')}
+                          style={styles.imageMarketplace}
+                        />
+                        <View>
+                          {!item.price.includes('Нет в наличии') &&
+                            !item.price.includes('-') && (
+                              <View style={styles.rows}>
+                                <Text style={styles.textPrice}>
+                                  {item.price} ₽
+                                </Text>
+                                <TouchableOpacity
+                                  style={styles.buttonBuy}
+                                  onPress={hadPress}>
+                                  <Text style={styles.textButtonBuy}>
+                                    Купить
+                                  </Text>
+                                </TouchableOpacity>
+                              </View>
+                            )}
+                          {(item.price.includes('Нет в наличии') ||
+                            item.price.includes('-')) && (
+                            <View style={styles.rows}>
+                              <Text style={styles.textPrice}>{item.price}</Text>
+                            </View>
+                          )}
+                        </View>
+                      </View>
+                    )}
+                    {item.market === 'zaka_zaka' && (
+                      <View style={styles.marketContainer}>
+                        <Image
+                          source={require('./assets/image/zakazaka.jpg')}
+                          style={styles.imageMarketplace}
+                        />
+                        <View>
+                          {!item.price.includes('Нет в наличии') &&
+                            !item.price.includes('-') && (
+                              <View style={styles.rows}>
+                                <Text style={styles.textPrice}>
+                                  {item.price} ₽
+                                </Text>
+                                <TouchableOpacity
+                                  style={styles.buttonBuy}
+                                  onPress={hadPress}>
+                                  <Text style={styles.textButtonBuy}>
+                                    Купить
+                                  </Text>
+                                </TouchableOpacity>
+                              </View>
+                            )}
+                          {(item.price.includes('Нет в наличии') ||
+                            item.price.includes('-')) && (
+                            <View style={styles.rows}>
+                              <Text style={styles.textPrice}>{item.price}</Text>
+                            </View>
+                          )}
+                        </View>
+                      </View>
+                    )}
                   </View>
-                  <TouchableOpacity
-                    style={styles.playButton}
-                    onPress={hadPress}>
-                    <Text style={styles.playButtonText}>Купить</Text>
-                  </TouchableOpacity>
-                </View>
+                ))}
               </View>
             )}
           </View>
@@ -502,12 +581,40 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: 'black',
     fontWeight: 'bold',
+    alignSelf: 'center',
+    marginRight: 15,
   },
   textPriceContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'flex-end',
     padding: 10,
+  },
+  marketContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  buttonBuy: {
+    backgroundColor: 'red',
+    alignSelf: 'center',
+    justifyContent: 'center',
+    borderRadius: 2,
+    elevation: 7,
+    width: 90,
+    height: 35,
+    marginBottom: 5,
+  },
+  textButtonBuy: {
+    color: 'white',
+    fontSize: 14,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  rows: {
+    flex: 1,
+    flexDirection: 'row',
   },
 });
 
